@@ -1,3 +1,5 @@
+const Categories = require('@resource-sentry/utils/lib/categories');
+
 const Reader = require('../src/index');
 
 describe('Reader', () => {
@@ -14,10 +16,10 @@ describe('Reader', () => {
     });
 
     it('uses Graphic category', () => {
-        expect(categories[4]).toBeDefined();
+        expect(categories[Categories.GRAPHIC]).toBeDefined();
     });
 
     it('finds recursively assets', () => {
-        expect(categories[4]).toHaveLength(3);
+        expect(categories[Categories.GRAPHIC]).toHaveLength(3);
     });
 });

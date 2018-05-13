@@ -1,3 +1,5 @@
+const Categories = require('@resource-sentry/utils/lib/categories');
+
 const Reader = require('../src/index');
 
 describe('Transform: Basic', () => {
@@ -10,7 +12,7 @@ describe('Transform: Basic', () => {
             .scan()
             .then(() => {
                 let categories = reader.getAllCategories();
-                let graphics = categories[4];
+                let graphics = categories[Categories.GRAPHIC];
 
                 svg = graphics
                     .filter(({name}) => (name === 'simple-sketch-import'))
