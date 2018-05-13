@@ -1,24 +1,17 @@
-const EventEmitter = require('eventemitter3'),
-      fs           = require('fs'),
-      glob         = require('fast-glob'),
-      path         = require('path'),
-      Promise      = require('bluebird');
+const Promise    = require('bluebird'),
+      fs         = require('fs'),
+      glob       = require('fast-glob'),
+      path       = require('path'),
+      BaseReader = require('@resource-sentry/utils/lib/base-reader'),
+      Categories = require('@resource-sentry/utils/lib/categories');
 
 const TransformBasic = require('./transform-basic');
 
-class SvgReader extends EventEmitter {
+class SvgReader extends BaseReader {
     constructor(config) {
         super();
         this.config = config;
-        this.categories = [];
         this.transforms = this.createTransformList(config.transform);
-        this.eventTarget = {target: this};
-    }
-
-    addValue(categories, category, name, value) {
-        let categoryData = categories[category] || [];
-        categoryData.push({name, value});
-        categories[category] = categoryData;
     }
 
     createTransformList(directives) {
@@ -40,13 +33,6 @@ class SvgReader extends EventEmitter {
         result.push(new TransformBasic());
 
         return result;
-    }
-
-    dispose() {
-    }
-
-    getAllCategories() {
-        return this.categories;
     }
 
     getEntry() {
@@ -72,10 +58,10 @@ class SvgReader extends EventEmitter {
                         content = transform.getResult(content);
                     });
 
-                    this.addValue(this.categories, 4, key, content);
+                    this.addValue(Categories.GRAPHIC, key, content);
                 });
             })
-            .then(() => this.emit('dataDidChange', this.eventTarget));
+            .then(() => this.dispatch('dataDidChange'));
     }
 }
 
