@@ -1,0 +1,26 @@
+{
+  "name": "@resource-sentry/reader-svg",
+  "version": "1.0.0",
+  "description": "Resource Sentry SVG Reader.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/resource-sentry/reader-svg.git"
+  },
+  "keywords": [
+    "svg",
+    "rs",
+    "resource-sentry",
+    "sentry",
+    "reader"
+  ],
+  "author": "Nicolas Siver",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/resource-sentry/reader-svg/issues"
+  },
+  "homepage": "https://github.com/resource-sentry/reader-svg#readme"
+}
