@@ -2,6 +2,10 @@
 
 Recursively walks through file-system and builds optimized SVG snippets ready to be injected in HTML.
 
+**Install**:
+
+> yarn add --dev @resource-sentry/reader-svg
+
 **Configuration**:
 
 - `entry`, path to a directory with SVG files.
