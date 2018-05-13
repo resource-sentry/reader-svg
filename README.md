@@ -2,15 +2,18 @@
 
 Recursively walks through file-system and builds optimized SVG snippets ready to be injected in HTML.
 
-**Install**:
+![Version](https://img.shields.io/npm/v/@resource-sentry/reader-svg.svg)
+![Dependencies](https://david-dm.org/resource-sentry/reader-svg.svg)
+
+## Installation
 
 > yarn add --dev @resource-sentry/reader-svg
 
-**Configuration**:
+## Configuration
 
 - `entry`, path to a directory with SVG files.
 
-Example:
+## Example
 
 ```
 -- [images]
