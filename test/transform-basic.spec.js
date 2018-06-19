@@ -5,6 +5,7 @@ const Reader = require('../src/index');
 describe('Transform: Basic', () => {
 
     let svg;
+    let svgMdn;
 
     beforeAll(() => {
         let reader = new Reader({entry: './test/data'});
@@ -16,6 +17,10 @@ describe('Transform: Basic', () => {
 
                 svg = graphics
                     .filter(({name}) => (name === 'simple-sketch-import'))
+                    .map(({value}) => value)[0];
+
+                svgMdn = graphics
+                    .filter(({name}) => (name === 'mdn-gradient'))
                     .map(({value}) => value)[0];
             });
     });
@@ -51,6 +56,14 @@ describe('Transform: Basic', () => {
 
     it('removes new lines', () => {
         expect(svg).not.toContain('\n');
+    });
+
+    it('removes empty definitions', () => {
+        expect(svg).not.toContain('defs');
+    });
+
+    it('omits non-empty definitions', () => {
+        expect(svgMdn).toContain('defs');
     });
 
 });
