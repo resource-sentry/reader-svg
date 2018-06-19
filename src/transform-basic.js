@@ -5,7 +5,8 @@ class TransformBasic {
         this.comments = /<!.*-->/g;
         this.verboseTags = /<(title|desc)>.*<\/\1>/g;
         this.idContent = /\sid=.*?\s/g;
-        this.responsive = /\s(width|height)=\S*/g;
+        this.responsiveWidth = /(<svg.*)\swidth=\S*/g;
+        this.responsiveHeight = /(<svg.*)\sheight=\S*/g;
         this.namespaces = /\sxmlns:\S+["']/g;
     }
 
@@ -15,7 +16,8 @@ class TransformBasic {
             .replace(this.comments, '')
             .replace(this.verboseTags, '')
             .replace(this.idContent, match => match.toLowerCase())
-            .replace(this.responsive, '')
+            .replace(this.responsiveWidth, '')
+            .replace(this.responsiveHeight, '')
             .replace(this.namespaces, '')
             .replace(this.formatting, '');
     }
