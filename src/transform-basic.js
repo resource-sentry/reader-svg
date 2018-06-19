@@ -8,6 +8,7 @@ class TransformBasic {
         this.responsiveWidth = /(<svg.*)\swidth=\S*/g;
         this.responsiveHeight = /(<svg.*)\sheight=\S*/g;
         this.namespaces = /\sxmlns:\S+["']/g;
+        this.emptyDefitions = /<(defs)><\/\1>/g;
     }
 
     getResult(content) {
@@ -19,6 +20,7 @@ class TransformBasic {
             .replace(this.responsiveWidth, '')
             .replace(this.responsiveHeight, '')
             .replace(this.namespaces, '')
+            .replace(this.emptyDefitions, '')
             .replace(this.formatting, '');
     }
 }
