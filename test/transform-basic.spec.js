@@ -42,6 +42,10 @@ describe('Transform: Basic', () => {
         expect(svg).not.toContain(' height=');
     });
 
+    it('omits dimensions on rect element', () => {
+       expect(svgMdn).toContain('<rect x="10" y="10"');
+    });
+
     it('removes XML declaration', () => {
         expect(svg).not.toContain('?xml');
     });
