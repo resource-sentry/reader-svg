@@ -42,8 +42,12 @@ describe('Transform: Basic', () => {
         expect(svg).not.toContain(' height=');
     });
 
+    it('makes SVG responsive with valid main svg tag', () => {
+        expect(svgMdn).toContain('<svg viewBox="0 0 80 30" xmlns="http://www.w3.org/2000/svg">');
+    });
+
     it('omits dimensions on rect element', () => {
-       expect(svgMdn).toContain('<rect x="10" y="10"');
+        expect(svgMdn).toContain('<rect x="10" y="10"');
     });
 
     it('removes XML declaration', () => {
