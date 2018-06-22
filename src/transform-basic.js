@@ -17,8 +17,8 @@ class TransformBasic {
             .replace(this.comments, '')
             .replace(this.verboseTags, '')
             .replace(this.idContent, match => match.toLowerCase())
-            .replace(this.responsiveWidth, '')
-            .replace(this.responsiveHeight, '')
+            .replace(this.responsiveWidth, '$1')
+            .replace(this.responsiveHeight, '$1')
             .replace(this.namespaces, '')
             .replace(this.emptyDefitions, '')
             .replace(this.formatting, '');
