@@ -62,6 +62,10 @@ describe('Transform: Basic', () => {
         expect(svgMdn).toContain('id="gradient01"');
     });
 
+    it('changes url references to use lowercase characters', () => {
+        expect(svgMdn).toContain('fill="url(#gradient01)"');
+    });
+
     it('removes extra namespaces', () => {
         expect(svg).not.toContain('xmlns:xlink');
     });
