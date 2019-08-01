@@ -20,6 +20,6 @@ describe('Reader', () => {
     });
 
     it('finds recursively assets', () => {
-        expect(categories[Categories.GRAPHIC]).toHaveLength(4);
+        expect(categories[Categories.GRAPHIC]).toHaveLength(5);
     });
 });
