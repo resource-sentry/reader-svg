@@ -6,6 +6,7 @@ describe('Transform: Basic', () => {
 
     let svg;
     let svgMdn;
+    let svgMdnDefs;
 
     beforeAll(() => {
         let reader = new Reader({entry: './test/data'});
@@ -21,6 +22,10 @@ describe('Transform: Basic', () => {
 
                 svgMdn = graphics
                     .filter(({name}) => (name === 'mdn-gradient'))
+                    .map(({value}) => value)[0];
+
+                svgMdnDefs = graphics
+                    .filter(({name}) => (name === 'mdn-defs'))
                     .map(({value}) => value)[0];
             });
     });
@@ -66,10 +71,6 @@ describe('Transform: Basic', () => {
         expect(svgMdn).toContain('fill="url(#gradient01)"');
     });
 
-    it('removes extra namespaces', () => {
-        expect(svg).not.toContain('xmlns:xlink');
-    });
-
     it('removes new lines', () => {
         expect(svg).not.toContain('\n');
     });
@@ -80,6 +81,19 @@ describe('Transform: Basic', () => {
 
     it('omits non-empty definitions', () => {
         expect(svgMdn).toContain('defs');
+    });
+
+    it('preserves namespace', () => {
+        expect(svgMdnDefs).toContain('xmlns:xlink="http://www.w3.org/1999/xlink"');
+        expect(svgMdnDefs).toContain('xlink:href=');
+    });
+
+    it('converts references to shape definitions', () => {
+        expect(svgMdnDefs).toContain('xlink:href="#mycircle"');
+    });
+
+    it('converts IRI to lowercase', () => {
+        expect(svgMdnDefs).toContain('fill="url(\'#mygradient\')"');
     });
 
 });
