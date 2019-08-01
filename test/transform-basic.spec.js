@@ -58,6 +58,10 @@ describe('Transform: Basic', () => {
         expect(svg).toContain('id="page-1"');
     });
 
+    it('changes identifiers to use lowercase in definitions', () => {
+        expect(svgMdn).toContain('id="gradient01"');
+    });
+
     it('removes extra namespaces', () => {
         expect(svg).not.toContain('xmlns:xlink');
     });
